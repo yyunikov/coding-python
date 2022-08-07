@@ -1,6 +1,6 @@
 # leetcode
 
-![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+![workflow](https://github.com/yyunikov/leetcode/actions/workflows/main.yml/badge.svg)
 
 Collection of LeetCode problems I'm resolving.
 
