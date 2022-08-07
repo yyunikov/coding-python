@@ -1,6 +1,6 @@
 import pytest
 
-from shortest_unsorted_sub_array import Solution
+from problems.shortest_unsorted_sub_array import Solution
 
 
 @pytest.mark.parametrize(

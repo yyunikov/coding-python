@@ -1,6 +1,6 @@
 import pytest as pytest
 
-from roman_numbers import Solution
+from problems.roman_numbers import Solution
 
 
 @pytest.mark.parametrize(

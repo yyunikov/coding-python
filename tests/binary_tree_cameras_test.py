@@ -1,6 +1,6 @@
 import pytest
 
-from binary_tree_cameras import TreeNode, Solution
+from problems.binary_tree_cameras import TreeNode, Solution
 
 
 @pytest.mark.parametrize(
