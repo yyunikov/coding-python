@@ -1,4 +1,4 @@
-from typing import Optional, List, Set
+from typing import Optional, List
 
 """
 You are given the root of a binary tree. We install cameras on the tree nodes where each camera at a node can monitor its parent, itself, and its immediate children.
@@ -65,9 +65,9 @@ class Solution:
         self.cover(cameras_count, node)
 
     def cover(self, cameras_count: List, node: Optional[TreeNode]):
-        if ((not hasattr(node, 'parent') and node.val == 0) or
-                (node.left and node.left.val == 0) or
-                (node.right and node.right.val == 0)):
+        if (not hasattr(node, 'parent') and node.val == 0) or \
+                (node.left and node.left.val == 0) or \
+                (node.right and node.right.val == 0):
             node.val = 1
             if hasattr(node, 'parent') and node.parent:
                 node.parent.val = 1

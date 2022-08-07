@@ -14,8 +14,8 @@ from problems.shortest_unsorted_sub_array import Solution
         ([5, 4, 3, 2, 1], 5),
         ([3, 2, 3, 2, 4], 4),
         ([2, 3, 3, 2, 4], 3),
-        ([1], 0)
-    ]
+        ([1], 0),
+    ],
 )
 def test_find_unsorted_subarray(nums, expected):
     assert Solution().findUnsortedSubarray(nums) == expected
