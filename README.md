@@ -2,7 +2,7 @@
 
 ![workflow](https://github.com/yyunikov/leetcode/actions/workflows/main.yml/badge.svg)
 
-Collection of LeetCode problems I'm resolving.
+Collection of LeetCode problems I'm solving.
 
 ## Requirements
 
