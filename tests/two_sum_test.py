@@ -10,5 +10,5 @@ from problems.two_sum import Solution
         ([2, 7, 11, 15], 9, [0, 1])
     ],
 )
-def test_find_unsorted_subarray(nums, target, expected):
+def test_two_sum(nums, target, expected):
     assert Solution().twoSum(nums, target) == expected
