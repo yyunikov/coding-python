@@ -62,5 +62,5 @@ from problems.prefix_suffix_search import WordFilter
         (["apple", "cidre"], "ci", "e", 1),
     ],
 )
-def test_prefix_suffix_search(words, prefix, suffix, expected):
+def test_solution(words, prefix, suffix, expected):
     assert WordFilter(words).f(prefix, suffix) == expected

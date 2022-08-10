@@ -47,5 +47,5 @@ from problems.longest_palindrome import Solution
         ),
     ],
 )
-def test_longest_palindrome(str, expected):
+def test_solution(str, expected):
     assert Solution().longestPalindrome(str) == expected

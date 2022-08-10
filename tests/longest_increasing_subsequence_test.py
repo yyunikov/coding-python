@@ -12,5 +12,5 @@ from problems.longest_increasing_subsequence import Solution
         ([7], 1),
     ],
 )
-def test_length_of_lis(nums, expected):
+def test_solution(nums, expected):
     assert Solution().lengthOfLIS(nums) == expected

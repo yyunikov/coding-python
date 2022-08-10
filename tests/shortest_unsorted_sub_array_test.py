@@ -17,5 +17,5 @@ from problems.shortest_unsorted_sub_array import Solution
         ([1], 0),
     ],
 )
-def test_find_unsorted_subarray(nums, expected):
+def test_solution(nums, expected):
     assert Solution().findUnsortedSubarray(nums) == expected

@@ -11,5 +11,5 @@ from problems.max_sub_array import Solution
         ([5, 4, -1, 7, 8], 23),
     ],
 )
-def test_max_sub_array(nums, expected):
+def test_solution(nums, expected):
     assert Solution().maxSubArray(nums) == expected

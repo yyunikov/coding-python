@@ -72,5 +72,5 @@ from utils.tree_node import TreeNode
         ),
     ],
 )
-def test_min_cameras(root, expected):
+def test_solution(root, expected):
     assert Solution().minCameraCover(root) == expected

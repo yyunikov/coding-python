@@ -8,6 +8,4 @@ class TreeNode:
         if not other:
             return False
 
-        return self.val == other.val and \
-               self.left == other.left and \
-               self.right == other.right
+        return self.val == other.val and self.left == other.left and self.right == other.right
