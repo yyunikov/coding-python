@@ -51,3 +51,6 @@ class Solution:
                         palindromes.add(sub_str)
 
         return longest_palindrome
+
+
+print(int(40000000 / 1000000000))
