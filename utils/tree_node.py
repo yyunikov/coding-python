@@ -5,7 +5,7 @@ class TreeNode:
         self.right = right
 
     def __eq__(self, other):
-        if not other:
+        if not other and not isinstance(other, self.__class__):
             return False
 
         return self.val == other.val and \
