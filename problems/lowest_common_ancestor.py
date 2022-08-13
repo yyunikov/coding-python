@@ -22,8 +22,7 @@ Example 3:
 Input: root = [2,1], p = 2, q = 1
 Output: 2
 """
-
-from collections import Set, MutableSet
+from typing import MutableSet
 
 from utils.tree_node import TreeNode
 
@@ -57,7 +56,7 @@ class Solution:
         return False  # node not found
 
     def find_common_ancestor(self, current: TreeNode, node: TreeNode,
-                             ancestors: Set[TreeNode]) -> (bool, TreeNode):
+                             ancestors: MutableSet[TreeNode]) -> (bool, TreeNode):
         if current.val == node.val:
             # node found
             if current in ancestors:
