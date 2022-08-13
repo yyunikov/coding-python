@@ -17,5 +17,5 @@ from src.algorithms.fibonacci import fib
         (20, 6765),
     ],
 )
-def test_fibonacci(num, expected):
+def test_algorithm(num, expected):
     assert fib(num) == expected
