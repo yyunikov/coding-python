@@ -1,6 +1,6 @@
 import pytest as pytest
 
-from problems.first_unique_char import Solution
+from src.problems.first_unique_char import Solution
 
 
 @pytest.mark.parametrize(

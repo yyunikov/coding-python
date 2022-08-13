@@ -24,7 +24,7 @@ Output: 2
 """
 from typing import MutableSet
 
-from utils.tree_node import TreeNode
+from src.utils.tree_node import TreeNode
 
 
 class Solution:

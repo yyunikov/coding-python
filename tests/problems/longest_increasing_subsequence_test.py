@@ -1,6 +1,6 @@
 import pytest
 
-from problems.longest_increasing_subsequence import Solution
+from src.problems.longest_increasing_subsequence import Solution
 
 
 @pytest.mark.parametrize(

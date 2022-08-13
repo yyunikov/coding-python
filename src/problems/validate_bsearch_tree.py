@@ -1,7 +1,7 @@
 import sys
-from typing import Optional, List
+from typing import Optional
 
-from utils.tree_node import TreeNode
+from src.utils.tree_node import TreeNode
 
 
 class Solution:

@@ -1,6 +1,6 @@
 import pytest
 
-from problems.reorder_log_file import Solution
+from src.problems.reorder_log_file import Solution
 
 
 @pytest.mark.parametrize(

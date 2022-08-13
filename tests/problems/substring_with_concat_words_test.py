@@ -1,6 +1,6 @@
 import pytest
 
-from problems.substring_with_concat_words import Solution
+from src.problems.substring_with_concat_words import Solution
 
 
 @pytest.mark.parametrize(

@@ -1,6 +1,6 @@
 from typing import Optional, List
 
-from utils.tree_node import TreeNode
+from src.utils.tree_node import TreeNode
 
 """
 You are given the root of a binary tree. We install cameras on the tree nodes where each camera at a node can monitor its parent, itself, and its immediate children.

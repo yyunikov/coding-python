@@ -1,6 +1,6 @@
 import pytest
 
-from problems.longest_palindrome import Solution
+from src.problems.longest_palindrome import Solution
 
 
 @pytest.mark.parametrize(

@@ -1,6 +1,6 @@
 import pytest
 
-from problems.prefix_suffix_search import WordFilter
+from src.problems.prefix_suffix_search import WordFilter
 
 
 @pytest.mark.parametrize(

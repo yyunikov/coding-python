@@ -1,7 +1,7 @@
 import pytest
 
-from problems.validate_bsearch_tree import Solution
-from utils.tree_node import TreeNode
+from src.problems.validate_bsearch_tree import Solution
+from src.utils.tree_node import TreeNode
 
 
 @pytest.mark.parametrize(

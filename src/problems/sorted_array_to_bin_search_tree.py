@@ -1,6 +1,6 @@
 from typing import Optional, List
 
-from utils.tree_node import TreeNode
+from src.utils.tree_node import TreeNode
 
 """
 PROBLEM

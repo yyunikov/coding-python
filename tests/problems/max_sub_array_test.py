@@ -1,6 +1,6 @@
 import pytest
 
-from problems.max_sub_array import Solution
+from src.problems.max_sub_array import Solution
 
 
 @pytest.mark.parametrize(

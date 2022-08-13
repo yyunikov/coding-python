@@ -1,8 +1,8 @@
 import pytest
 
-import problems.lowest_common_ancestor_elegant
-from problems.lowest_common_ancestor import Solution
-from utils.tree_node import TreeNode
+import src.problems.lowest_common_ancestor_elegant
+from src.problems.lowest_common_ancestor import Solution
+from src.utils.tree_node import TreeNode
 
 
 @pytest.mark.parametrize(
@@ -44,5 +44,5 @@ def test_solution(root, p: TreeNode, q: TreeNode, expected: int):
     ],
 )
 def test_elegant_solution(root, p: TreeNode, q: TreeNode, expected: int):
-    assert problems.lowest_common_ancestor_elegant.Solution()\
+    assert src.problems.lowest_common_ancestor_elegant.Solution()\
                .lowestCommonAncestor(root, p, q).val == expected

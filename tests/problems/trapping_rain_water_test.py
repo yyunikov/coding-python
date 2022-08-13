@@ -1,6 +1,6 @@
 import pytest
 
-from problems.trapping_rain_water import Solution
+from src.problems.trapping_rain_water import Solution
 
 
 @pytest.mark.parametrize(

@@ -1,7 +1,7 @@
 import pytest
 
-from problems.sorted_array_to_bin_search_tree import Solution
-from utils.tree_node import TreeNode
+from src.problems.sorted_array_to_bin_search_tree import Solution
+from src.utils.tree_node import TreeNode
 
 
 @pytest.mark.parametrize(

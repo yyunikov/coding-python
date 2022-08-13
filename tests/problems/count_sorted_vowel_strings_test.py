@@ -1,6 +1,6 @@
 import pytest
 
-from problems.count_sorted_vowel_strings_backtrack import Solution
+from src.problems.count_sorted_vowel_strings_backtrack import Solution
 
 
 @pytest.mark.parametrize(

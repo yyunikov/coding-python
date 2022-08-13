@@ -1,6 +1,6 @@
 import pytest as pytest
 
-from problems.integer_to_english_word import Solution
+from src.problems.integer_to_english_word import Solution
 
 
 @pytest.mark.parametrize(
