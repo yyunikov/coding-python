@@ -1,6 +1,6 @@
 import pytest
 
-from src.problems.longest_palindrome import Solution
+from src.problems.longest_palindrome import Solution as SolutionOptimal
 from src.problems.longest_palindrome_brute_force import Solution as SolutionBruteForce
 
 test_parameters = [
@@ -57,7 +57,7 @@ test_parameters = [
     "s,expected", test_parameters,
 )
 def test_solution(s, expected):
-    assert Solution().longestPalindrome(s) == expected
+    assert SolutionOptimal().longestPalindrome(s) == expected
 
 
 @pytest.mark.parametrize(
