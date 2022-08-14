@@ -22,35 +22,51 @@ class Solution:
 
         if str_len == 1:
             return s
-
         if str_len < 1 or str_len > 1000:
             return None
+        if self.is_palindrome(s):
+            return s
 
         longest_palindrome = None
         longest_palindrome_len = 0
+
         for i in range(0, str_len):
-            for j in range(i, str_len + 1):
-                sub_str_len = j - i
-                larger_than_longest = sub_str_len > longest_palindrome_len if longest_palindrome else True
+            current_str = s[i]
 
-                # avoid shorter strings re-computation
-                if longest_palindrome_len and not larger_than_longest:
-                    continue
+            left_border = i - 1
+            right_border = i + 1
 
-                sub_str = s[i:j]
+            while self.is_palindrome(current_str):
+                if len(current_str) > longest_palindrome_len:
+                    longest_palindrome = current_str
+                    longest_palindrome_len = len(current_str)
 
-                # avoid re-computation of the same ones
-                if sub_str in palindromes:
-                    continue
+                palindromes.add(current_str)
+                palindromes.add(current_str[::-1])
 
-                reversed_sub_str = sub_str[::-1]
-                if sub_str == reversed_sub_str:  # is palindrome
-                    if not longest_palindrome or larger_than_longest:
-                        longest_palindrome = sub_str
-                        longest_palindrome_len = sub_str_len
-                        palindromes.add(sub_str)
+                # try to expand from left only
+                if left_border >= 0:
+                    expanded_str = s[left_border] + current_str
+                    if self.is_palindrome(expanded_str):
+                        current_str = expanded_str
+                        # expand left border
+                        left_border -= 1
+                        continue
+
+                # try to expand the string from both sides
+                if left_border >= 0 and right_border < len(s):
+                    current_str = s[left_border] + current_str + s[right_border]
+                    if self.is_palindrome(current_str):
+                        # expand borders
+                        left_border -= 1
+                        right_border += 1
+                        continue
+                else:
+                    # we've tried all options - no palindrome here
+                    break
 
         return longest_palindrome
 
-
-print(int(40000000 / 1000000000))
+    def is_palindrome(self, s: str) -> bool:
+        reversed_sub_str = s[::-1]
+        return s == reversed_sub_str
