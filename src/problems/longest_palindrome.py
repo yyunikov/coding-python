@@ -57,6 +57,8 @@ class Solution:
                         left_border -= 1
                         right_border += 1
                         continue
+                else:
+                    break
 
         return longest_palindrome
 

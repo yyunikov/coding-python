@@ -63,5 +63,5 @@ def test_solution(s, expected):
 @pytest.mark.parametrize(
     "s,expected", test_parameters,
 )
-def test_solution(s, expected):
+def test_solution_brute_force(s, expected):
     assert SolutionBruteForce().longestPalindrome(s) == expected
