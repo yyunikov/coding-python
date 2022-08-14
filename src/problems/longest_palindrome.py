@@ -17,7 +17,6 @@ Output: "bb"
 class Solution:
 
     def longestPalindrome(self, s: str) -> str:
-        palindromes = set()
         str_len = len(s)
 
         if str_len == 1:
@@ -41,9 +40,6 @@ class Solution:
                     longest_palindrome = current_str
                     longest_palindrome_len = len(current_str)
 
-                palindromes.add(current_str)
-                palindromes.add(current_str[::-1])
-
                 # try to expand from left only
                 if left_border >= 0:
                     expanded_str = s[left_border] + current_str
@@ -61,9 +57,6 @@ class Solution:
                         left_border -= 1
                         right_border += 1
                         continue
-                else:
-                    # we've tried all options - no palindrome here
-                    break
 
         return longest_palindrome
 
