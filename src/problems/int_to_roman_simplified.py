@@ -50,6 +50,9 @@ class Solution:
         for i, n in enumerate(self.all_numbers):
             if num >= n:
                 count, num = divmod(num, n)
+                # same as:
+                # count = num // n
+                # num = num % n
                 result += count * self.alphabet[n]
 
         return result
