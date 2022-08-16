@@ -17,11 +17,13 @@ Explanation: All possible strings are: "a", "e", "i" , "o" and "u".
 Example 2:
 
 Input: n = 2
-Output: 10
+Output: 15
 Explanation: All possible strings are: "ae", "ea", "ei", "ia", "ie", "io", "iu", "oi", "ou" and "ua".
+
 Example 3:
 
-Input: n = 5
+Input: n = 33
+Output: 66045
 """
 
 
@@ -50,12 +52,7 @@ class Solution:
             return 1
 
         result = 0
-        print(self.vowels[vowel_key], end="")
         for i in range(vowel_key, len(self.vowels) + 1):
             result += self.countVowelStringsRecursive(n - 1, i)
 
-        print()
         return result
-
-
-print(Solution().countVowelStrings(3))

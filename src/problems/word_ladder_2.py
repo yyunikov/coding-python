@@ -21,64 +21,102 @@ Input: beginWord = "hit", endWord = "cog", wordList = ["hot","dot","dog","lot","
 Output: []
 Explanation: The endWord "cog" is not in wordList, therefore there is no valid transformation sequence.
 """
-from itertools import chain
 from typing import List
 
 
 class Vertex:
     def __init__(self, value):
-        self.value = value
-        self.neighbours = {}
+        self.value: str = value
+        self.neighbours: dict[str, Vertex] = {}
 
-    def add_neighbour(self, value: str):
+    def add_new_neighbour(self, value: str):
         neighbour = Vertex(value)
         self.neighbours[value] = neighbour
         return neighbour
 
+    def add_neighbour(self, node: 'Vertex'):
+        self.neighbours[node.value] = node
+
+    def __eq__(self, other):
+        if not other or not isinstance(other, self.__class__):
+            return False
+
+        return self.value == other.value and self.neighbours == other.neighbours
+
+    def __hash__(self):
+        return hash((self.value, tuple(self.neighbours.keys())))
+
 
 class Solution:
-    def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
+    def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) \
+            -> List[List[str]]:
         current_node = Vertex(beginWord)
 
-        self.init_graph(current_node, wordList)
+        if beginWord in wordList:
+            wordList.remove(beginWord)
 
-        paths = self.find_paths(current_node, endWord)
+        self.init_graph([current_node], wordList)
 
-        min_paths = []
-        min_path_len = len(min(paths))
-        for path in paths:
-            if len(path) == min_path_len:
-                min_paths.append(path)
+        paths = self.find_paths(current_node)
+        paths_with_end_word = list(filter(lambda p: endWord in p, paths))
 
-        return min_paths
+        if paths_with_end_word:
+            min_paths = []
+            min_path_len = len(min(paths_with_end_word))
+            for path in paths_with_end_word:
+                if len(path) == min_path_len:
+                    min_paths.append(path)
 
-    def find_paths(self, current_node: Vertex, endWord: str) -> List[List[str]]:
-        paths = []
-        # this function needs to be fixed
-        path = [current_node.value]
-        for key, neighbour in current_node.neighbours.items():
-            path.append(neighbour.value)
-            if neighbour.value == endWord:
-                break
-            found_paths = self.find_paths(neighbour, endWord)
-            path.extend(list(chain.from_iterable(found_paths)))
-            paths.append(path)
+            return min_paths
+        else:
+            return []
+
+    def find_paths(self, current_node: Vertex) -> List[List[str]]:
+        # bfs
+        queue = [current_node]
+        visited = set()
+        paths = [[current_node.value]]
+
+        while queue:
+            node = queue.pop()
+
+            new_paths = []
+            paths_to_remove = []
+
+            if node not in visited and node.neighbours:
+                for path in paths:
+                    if node.value in path:
+                        for neighbour_value, neighbour in node.neighbours.items():
+                            new_path = path.copy()
+                            new_path.append(neighbour_value)
+                            visited.add(node)
+                            queue.append(neighbour)
+
+                            new_paths.append(new_path)
+                            paths_to_remove.append(path)
+
+            [paths.remove(path) for path in paths_to_remove if path in paths]
+            [paths.append(path) for path in new_paths]
 
         return paths
 
-    def init_graph(self, current_node: Vertex, wordList: List[str]):
-        for word in wordList:
-            if self.is_single_letter_diff(current_node.value, word):
-                inserted = current_node.add_neighbour(word)
-                copyWordList = wordList.copy()
-                copyWordList.remove(word)
-                self.init_graph(inserted, copyWordList)
+    def init_graph(self, nodes: List[Vertex], wordList: List[str]):
+        if not wordList:
+            return
 
-    def add_to_dict(self, dictionary: dict, key: str, value: str):
-        if key in dictionary:
-            dictionary[key].add(value)
-        else:
-            dictionary[key] = set(value)
+        inserted_nodes = []
+        words_to_remove = []
+
+        for node in nodes:
+            for word in wordList:
+                if self.is_single_letter_diff(node.value, word):
+                    inserted = node.add_new_neighbour(word)
+                    words_to_remove.append(word)
+                    inserted_nodes.append(inserted)
+
+        [wordList.remove(word) for word in words_to_remove if word in wordList]
+
+        self.init_graph(inserted_nodes, wordList)
 
     def is_single_letter_diff(self, word1: str, word2: str) -> bool:
         diff_count = 0
