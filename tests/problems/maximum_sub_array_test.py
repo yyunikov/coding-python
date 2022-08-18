@@ -1,6 +1,6 @@
 import pytest
 
-from src.problems.maximum_subarray import max_sub_array
+from src.problems.maximum_subarray import Solution
 
 
 @pytest.mark.parametrize(
@@ -10,5 +10,5 @@ from src.problems.maximum_subarray import max_sub_array
         ([-1], -1)
     ],
 )
-def test_algorithm(nums, expected):
-    assert max_sub_array(nums) == expected
+def test_solution(nums, expected):
+    assert Solution().max_sub_array(nums) == expected
