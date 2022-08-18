@@ -10,5 +10,5 @@ from src.problems.reduce_array_size_to_half import Solution
         ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5)
     ],
 )
-def test_algorithm(nums, expected):
+def test_solution(nums, expected):
     assert Solution().minSetSize(nums) == expected
