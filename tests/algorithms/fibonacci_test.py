@@ -27,5 +27,5 @@ def test_algorithm(num, expected):
     "num,expected",
     test_parameters,
 )
-def test_algorithm(num, expected):
+def test_algorithm_with_lru(num, expected):
     assert fib_with_lru_cache(num) == expected
