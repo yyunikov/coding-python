@@ -36,7 +36,7 @@ We made 2 refueling stops along the way, so we return 2.
 from typing import List
 
 
-# TODO the problem is not solved exactly right, see the commented test
+# the problem is not solved exactly right, see the commented test
 class Solution:
     def minRefuelStops(self, target: int, startFuel: int, stations: List[List[int]]) -> int:
         # how many stops do we need to get to N
