@@ -40,6 +40,8 @@ class Solution(object):
         # represents number of fuel we'll have at which stop
         dp = [startFuel] + [0] * len(stations)
         for i, (location, capacity) in enumerate(stations):
+            # go backwards from i station
+            # and find the minimum number of stations to reach it
             for t in range(i, -1, -1):
                 if dp[t] >= location:
                     # see if we need refuel
