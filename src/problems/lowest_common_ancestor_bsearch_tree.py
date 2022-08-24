@@ -48,7 +48,7 @@ class Solution:
                 return True
 
         if current.right:
-            node_found = self.find_ancestors(current.left, node, ancestors)
+            node_found = self.find_ancestors(current.right, node, ancestors)
             if node_found:
                 ancestors.add(current)
                 return True

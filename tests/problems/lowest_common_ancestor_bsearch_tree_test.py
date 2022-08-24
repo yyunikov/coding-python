@@ -1,7 +1,7 @@
 import pytest
 
-import src.problems.lowest_common_ancestor_elegant
-from src.problems.lowest_common_ancestor import Solution
+from src.problems.lowest_common_ancestor_bsearch_tree_elegant import Solution as SolutionElegant
+from src.problems.lowest_common_ancestor_bsearch_tree import Solution
 from src.utils.tree_node import TreeNode
 
 
@@ -44,5 +44,4 @@ def test_solution(root, p: TreeNode, q: TreeNode, expected: int):
     ],
 )
 def test_elegant_solution(root, p: TreeNode, q: TreeNode, expected: int):
-    assert src.problems.lowest_common_ancestor_elegant.Solution()\
-               .lowestCommonAncestor(root, p, q).val == expected
+    assert SolutionElegant().lowestCommonAncestor(root, p, q).val == expected
