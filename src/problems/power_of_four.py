@@ -26,9 +26,3 @@ class Solution:
     # 16=0000000
     def isPowerOfFour(self, num: int) -> bool:
         return num > 0 and num & (num - 1) == 0 and num & 0b10101010101010101010101010101010 == 0
-
-
-x = 0b00000000000000000000000000000100
-print(x)
-print(x << 2)
-print(x << 4)
