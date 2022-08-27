@@ -88,21 +88,4 @@ class Solution:
                     if not inserted:
                         break
 
-        for tree in self.vowel_trees.values():
-            self.traverseAndPrint(tree)
-
         return Solution.count
-
-    def traverseAndPrint(self, tree: Node):
-        if not tree.childs:
-            print(tree.value)
-
-        for child in tree.childs:
-            if tree.depth != 1:
-                print(tree.value, end="")
-            self.traverseAndPrint(child)
-            if tree.depth != 1:
-                print(tree.value, end="")
-
-
-print(Solution().countVowelStrings(3))

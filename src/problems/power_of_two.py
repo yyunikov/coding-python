@@ -31,9 +31,3 @@ class Solution(object):
         if n == 0:
             return False
         return n & (n - 1) == 0  # set bit with 1 to 0 and verify if it's 0
-
-
-x = 0b00000000000000000000000000000010
-print(x)
-print(x << 1)
-print(x << 2)
