@@ -25,22 +25,8 @@ class Solution:
 
     # heap: [ (min_available_time: 11): 2, (min_available_time 31: 1) ]
 
-    def interval_comparator(self, interval1, interval2):
-        if interval1[0] < interval2[0]:
-            return -1
-        elif interval1[0] > interval2[0]:
-            return 1
-        else:  # if equal
-            # put shorter first
-            if interval1[1] < interval2[1]:
-                return -1
-            elif interval1[1] > interval2[1]:
-                return 1
-            # if they're totally the same
-            return 0
-
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
-        sorted_intervals = sorted(intervals, key=cmp_to_key(self.interval_comparator))
+        sorted_intervals = sorted(intervals, key=lambda interval: interval[0])
 
         heap = PriorityQueue()
         heap.put((sorted_intervals[0][1], 1))  # [ (31, 1) ]

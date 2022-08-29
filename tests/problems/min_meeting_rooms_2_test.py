@@ -26,5 +26,5 @@ def test_solution_priority_queue(intervals, expected):
         ([[9, 10], [4, 9], [4, 17]], 2)
     ],
 )
-def test_solution_priority_queue(intervals, expected):
+def test_solution_heapq(intervals, expected):
     assert SolutionHeapq().minMeetingRooms(intervals) == expected
