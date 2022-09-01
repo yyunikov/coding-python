@@ -1,8 +1,9 @@
-# leetcode
+# Python Coding
 
 ![workflow](https://github.com/yyunikov/leetcode/actions/workflows/main.yml/badge.svg)
 
-Collection of LeetCode problems I'm solving and simple algorithms.
+Collection of problems I'm solving on LeetCode, met on the interviews or any other sources.
+Plus an implementation of few simple algorithms.
 
 ## Requirements
 
