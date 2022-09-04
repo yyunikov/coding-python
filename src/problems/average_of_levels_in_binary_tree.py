@@ -27,15 +27,8 @@ class Solution:
              level: int,
              sums_on_level: Dict[int, int],
              count_on_level: Dict[int, int]):
-        if level in sums_on_level:
-            sums_on_level[level] = sums_on_level[level] + root.val
-        else:
-            sums_on_level[level] = root.val
-
-        if level in count_on_level:
-            count_on_level[level] = count_on_level[level] + 1
-        else:
-            count_on_level[level] = 1
+        sums_on_level[level] = sums_on_level[level] + root.val if level in sums_on_level else root.val
+        count_on_level[level] = count_on_level[level] + 1 if level in count_on_level else 1
 
         if root.left:
             self._dfs(root.left, level + 1, sums_on_level, count_on_level)
@@ -45,11 +38,7 @@ class Solution:
     def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
         sums_on_level: Dict[int, int] = dict()
         count_on_level: Dict[int, int] = dict()
-        results = []
 
         self._dfs(root, 0, sums_on_level, count_on_level)
 
-        for level, value in sums_on_level.items():
-            results.append(sums_on_level[level] / count_on_level[level])
-
-        return results
+        return [sums_on_level[level] / count_on_level[level] for level, value in sums_on_level.items()]
