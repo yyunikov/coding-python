@@ -6,8 +6,9 @@ from src.problems.string_expand import Solution
 @pytest.mark.parametrize(
     "s,expected",
     [
-        ("xy3[abc]zy", "xyabcabcabczy"),
-        ("xy3[a4[b]c]ab2[baaa]zy", "xyabbbbcabbbbcabbbbcabbaaabaaazy")
+        ("a2[b]c", "abbc"),
+        ("ab2[abc]dd", "ababcabcdd"),
+        ("ab1[a2[b]c]ab3[ba]dd", "ababbcabbababadd")
     ],
 )
 def test_solution(s, expected):

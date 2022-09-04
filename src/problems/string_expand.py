@@ -1,8 +1,11 @@
 """
 PROBLEM
 
-xy3[abc]zy -> xyabcabcabczy
-xy3[a4[b]c]ab2[baaa]zy ->
+Expand the String by parsing the digits and value in brackets.
+
+a2[b]c -> abbc
+ab3[abc]dd -> ababcabcabcdd
+ab1[a2[b]c]ab3[ba]dd -> ababbcabbababadd
 """
 
 
