@@ -31,7 +31,6 @@ Output: 3
 
 
 class GridItem:
-    island_id: str
     val: str
     horizontal_position: int
     vertical_position: int
@@ -40,7 +39,6 @@ class GridItem:
         self.val = val
         self.horizontal_position = horizontal_position
         self.vertical_position = vertical_position
-        self.island_id = None
 
     def __eq__(self, other):
         return self.horizontal_position == other.horizontal_position and \
@@ -52,57 +50,58 @@ class GridItem:
 
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        root = GridItem(grid[0][0])
-        root.level = 0
-        islands = set()
-        # coordinates to grid item
-        grid_dict: Dict[Tuple[int, int], GridItem] = {(0, 0): root}
-        if root.val == "1":
-            root.island_id = str(uuid.uuid4())
-            islands.add(root.island_id)
-
-        self.init_grid_dict(grid, root, grid_dict)
-
-        for v in grid_dict.values():
-            if v.island_id:
-                islands.add(v.island_id)
-
-        return len(islands)
-
-    def init_grid_dict(self,
-                       grid: List[List[str]],
-                       root: GridItem,
-                       grid_dict: Dict[Tuple, GridItem]):
+        islands_num = 0
         vertical_size = len(grid)
         horizontal_size = len(grid[0])
 
         q = Queue()
-        q.put(root)
 
-        while not q.empty():
-            current = q.get()
-            current_coordinates = (current.vertical_position, current.horizontal_position)
+        for vertical_coordinate in range(0, vertical_size):
+            for horizontal_coordinate in range(0, horizontal_size):
+                current_item = grid[vertical_coordinate][horizontal_coordinate]
 
-            if current_coordinates[0] < vertical_size and current_coordinates[1] + 1 < horizontal_size:
-                right_item_coordinates = (current_coordinates[0], current_coordinates[1] + 1)
-                right_item = grid[right_item_coordinates[0]][right_item_coordinates[1]]
-                item = GridItem(right_item, right_item_coordinates[0], right_item_coordinates[1]) \
-                    if right_item_coordinates not in grid_dict else grid_dict[right_item_coordinates]
-                if right_item == "1" and current.island_id:
-                    item.island_id = current.island_id
-                elif right_item == "1" and not item.island_id and not current.island_id:
-                    item.island_id = str(uuid.uuid4())
-                grid_dict[right_item_coordinates] = item
-                q.put(item)
+                if current_item == "1":
+                    islands_num += 1
+                    q.put(GridItem(current_item, vertical_coordinate, horizontal_coordinate))
+                else:
+                    continue
 
-            if current_coordinates[1] < horizontal_size and current_coordinates[0] + 1 < vertical_size:
-                bottom_item_coordinates = (current_coordinates[0] + 1, current_coordinates[1])
-                bottom_item = grid[bottom_item_coordinates[0]][bottom_item_coordinates[1]]
-                item = GridItem(bottom_item, bottom_item_coordinates[0], bottom_item_coordinates[1]) \
-                    if bottom_item_coordinates not in grid_dict else grid_dict[bottom_item_coordinates]
-                if bottom_item == "1" and current.island_id:
-                    item.island_id = current.island_id
-                elif bottom_item == "1" and not item.island_id and not current.island_id:
-                    item.island_id = str(uuid.uuid4())
-                grid_dict[bottom_item_coordinates] = item
-                q.put(item)
+                while not q.empty():
+                    queued_item = q.get()
+                    current_coordinates = (queued_item.vertical_position, queued_item.horizontal_position)
+
+                    # look left
+                    if current_coordinates[1] - 1 >= 0:
+                        left_item = grid[current_coordinates[0]][current_coordinates[1] - 1]
+                        if left_item == "1":
+                            item = GridItem(left_item, current_coordinates[0], current_coordinates[1] - 1)
+                            q.put(item)
+                            grid[current_coordinates[0]][current_coordinates[1] - 1] = "0"
+
+                    # look up
+                    if current_coordinates[0] - 1 >= 0:
+                        up_item = grid[current_coordinates[0] - 1][current_coordinates[1]]
+                        if up_item == "1":
+                            item = GridItem(up_item, current_coordinates[0] - 1, current_coordinates[1])
+                            q.put(item)
+                            grid[current_coordinates[0] - 1][current_coordinates[1]] = "0"
+
+                    # look right
+                    if current_coordinates[0] < vertical_size and current_coordinates[1] + 1 < horizontal_size:
+                        right_item = grid[current_coordinates[0]][current_coordinates[1] + 1]
+                        if right_item == "1":
+                            item = GridItem(right_item, current_coordinates[0], current_coordinates[1] + 1)
+                            q.put(item)
+                            grid[current_coordinates[0]][current_coordinates[1] + 1] = "0"
+
+                    # look bottom
+                    if current_coordinates[1] < horizontal_size and current_coordinates[0] + 1 < vertical_size:
+                        bottom_item = grid[current_coordinates[0] + 1][current_coordinates[1]]
+                        if bottom_item == "1":
+                            item = GridItem(bottom_item, current_coordinates[0] + 1, current_coordinates[1])
+                            q.put(item)
+                            grid[current_coordinates[0] + 1][current_coordinates[1]] = "0"
+
+                    grid[queued_item.vertical_position][queued_item.horizontal_position] = "0"
+
+        return islands_num
