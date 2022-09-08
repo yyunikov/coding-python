@@ -1,6 +1,6 @@
 from typing import Optional, List
 
-from src.utils.tree_node import TreeNode
+from src.utils.tree_node import BTreeNode
 
 """
 PROBLEM
@@ -23,10 +23,10 @@ Explanation: [1,null,3] and [3,1] are both height-balanced BSTs.
 
 
 class Solution:
-    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+    def sortedArrayToBST(self, nums: List[int]) -> Optional[BTreeNode]:
         return self.insert_middle_node(None, nums)
 
-    def insert_middle_node(self, middle_node: TreeNode, nums: List[int]) -> TreeNode:
+    def insert_middle_node(self, middle_node: BTreeNode, nums: List[int]) -> BTreeNode:
         # find the root, the average middle
         # if the array is already ordered in ascending order
         # then the middle element would be the root
@@ -37,7 +37,7 @@ class Solution:
         middle_value = nums[middle_index]
 
         if not middle_node:
-            middle_node = TreeNode(middle_value)
+            middle_node = BTreeNode(middle_value)
         else:
             middle_node = self.insert_node(middle_node, middle_value)
 
@@ -48,13 +48,13 @@ class Solution:
 
         return middle_node
 
-    def insert_node(self, root: TreeNode, insert_value: int) -> TreeNode:
+    def insert_node(self, root: BTreeNode, insert_value: int) -> BTreeNode:
         if not root.left and insert_value <= root.val:
-            root.left = TreeNode(insert_value)
+            root.left = BTreeNode(insert_value)
             return root.left
 
         if not root.right and insert_value > root.val:
-            root.right = TreeNode(insert_value)
+            root.right = BTreeNode(insert_value)
             return root.right
 
         if root.left and insert_value <= root.left.val:

@@ -24,19 +24,19 @@ Output: 2
 """
 from typing import MutableSet
 
-from src.utils.tree_node import TreeNode
+from src.utils.tree_node import BTreeNode
 
 
 class Solution:
-    def lowestCommonAncestor(self, root: TreeNode, p: TreeNode,
-                             q: TreeNode) -> TreeNode:
+    def lowestCommonAncestor(self, root: BTreeNode, p: BTreeNode,
+                             q: BTreeNode) -> BTreeNode:
         p_ancestors = {root}
         self.find_ancestors(root, p, p_ancestors)
         found, ancestor = self.find_common_ancestor(root, q, p_ancestors)
         return ancestor
 
-    def find_ancestors(self, current: TreeNode, node: TreeNode,
-                       ancestors: MutableSet[TreeNode]) -> bool:
+    def find_ancestors(self, current: BTreeNode, node: BTreeNode,
+                       ancestors: MutableSet[BTreeNode]) -> bool:
         if current.val == node.val:
             ancestors.add(current)
             return True  # node found
@@ -55,8 +55,8 @@ class Solution:
 
         return False  # node not found
 
-    def find_common_ancestor(self, current: TreeNode, node: TreeNode,
-                             ancestors: MutableSet[TreeNode]) -> (bool, TreeNode):
+    def find_common_ancestor(self, current: BTreeNode, node: BTreeNode,
+                             ancestors: MutableSet[BTreeNode]) -> (bool, BTreeNode):
         if current.val == node.val:
             # node found
             if current in ancestors:

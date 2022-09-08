@@ -1,6 +1,6 @@
 from typing import Optional
 
-from src.utils.tree_node import TreeNode
+from src.utils.tree_node import BTreeNode
 
 """
 PROBLEM
@@ -26,11 +26,11 @@ Explanation: Longest consecutive sequence path is 2-3, not 3-2-1, so return 2.
 
 class Solution:
 
-    def longestConsecutive(self, root: Optional[TreeNode]) -> int:
+    def longestConsecutive(self, root: Optional[BTreeNode]) -> int:
         max_length = 1
 
-        def dfs(node: Optional[TreeNode],
-                parent: Optional[TreeNode],
+        def dfs(node: Optional[BTreeNode],
+                parent: Optional[BTreeNode],
                 current_length: int):
             if not node:
                 return

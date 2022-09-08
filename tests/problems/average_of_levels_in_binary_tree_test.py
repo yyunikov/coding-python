@@ -1,20 +1,20 @@
 import pytest
 
 from src.problems.average_of_levels_in_binary_tree import Solution
-from src.utils.tree_node import TreeNode
+from src.utils.tree_node import BTreeNode
 
 
 @pytest.mark.parametrize(
     "root,expected",
     [
-        (TreeNode(3, left=TreeNode(9),
-                  right=TreeNode(
-                      20, left=TreeNode(15), right=TreeNode(7)
+        (BTreeNode(3, left=BTreeNode(9),
+                   right=BTreeNode(
+                      20, left=BTreeNode(15), right=BTreeNode(7)
                   )),
          [3.00000, 14.50000, 11.00000]
          ),
-        (TreeNode(3, left=TreeNode(9, left=TreeNode(15), right=TreeNode(7)),
-                  right=TreeNode(20)),
+        (BTreeNode(3, left=BTreeNode(9, left=BTreeNode(15), right=BTreeNode(7)),
+                   right=BTreeNode(20)),
          [3.00000, 14.50000, 11.00000]
          ),
     ],

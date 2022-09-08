@@ -18,12 +18,12 @@ Output: [3.00000,14.50000,11.00000]
 """
 from typing import Optional, Dict, List
 
-from src.utils.tree_node import TreeNode
+from src.utils.tree_node import BTreeNode
 
 
 class Solution:
     def _dfs(self,
-             root: Optional[TreeNode],
+             root: Optional[BTreeNode],
              level: int,
              sums_on_level: Dict[int, int],
              count_on_level: Dict[int, int]):
@@ -35,7 +35,7 @@ class Solution:
         if root.right:
             self._dfs(root.right, level + 1, sums_on_level, count_on_level)
 
-    def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+    def averageOfLevels(self, root: Optional[BTreeNode]) -> List[float]:
         sums_on_level: Dict[int, int] = dict()
         count_on_level: Dict[int, int] = dict()
 

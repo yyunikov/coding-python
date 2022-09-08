@@ -1,34 +1,34 @@
 import pytest
 
 from src.problems.validate_bsearch_tree import Solution
-from src.utils.tree_node import TreeNode
+from src.utils.tree_node import BTreeNode
 
 
 @pytest.mark.parametrize(
     "tree,expected",
     [
-        (TreeNode(
-            2, left=TreeNode(
+        (BTreeNode(
+            2, left=BTreeNode(
                 1
-            ), right=TreeNode(
+            ), right=BTreeNode(
                 3
             )
         ), True),
-        (TreeNode(
-            5, left=TreeNode(
+        (BTreeNode(
+            5, left=BTreeNode(
                 4
-            ), right=TreeNode(
-                6, left=TreeNode(3),
-                right=TreeNode(7)
+            ), right=BTreeNode(
+                6, left=BTreeNode(3),
+                right=BTreeNode(7)
             )
         ), False),
-        (TreeNode(
-            3, left=TreeNode(
-                1, left=TreeNode(0),
-                right=TreeNode(2)
-            ), right=TreeNode(
-                5, left=TreeNode(4),
-                right=TreeNode(6)
+        (BTreeNode(
+            3, left=BTreeNode(
+                1, left=BTreeNode(0),
+                right=BTreeNode(2)
+            ), right=BTreeNode(
+                5, left=BTreeNode(4),
+                right=BTreeNode(6)
             )
         ), True)
     ],

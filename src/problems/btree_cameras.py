@@ -1,6 +1,6 @@
 from typing import Optional, List
 
-from src.utils.tree_node import TreeNode
+from src.utils.tree_node import BTreeNode
 
 """
 You are given the root of a binary tree. We install cameras on the tree nodes where each camera at a node can monitor its parent, itself, and its immediate children.
@@ -24,7 +24,7 @@ Explanation: At least two cameras are needed to monitor all nodes of the tree. T
 
 class Solution:
 
-    def minCameraCover(self, root: Optional[TreeNode]) -> int:
+    def minCameraCover(self, root: Optional[BTreeNode]) -> int:
         if not root:
             return 0
 
@@ -43,7 +43,7 @@ class Solution:
         total = left_cameras[0] + right_cameras[0]
         return total if not total == 0 else 1
 
-    def traverse(self, cameras_count: List, node: Optional[TreeNode]):
+    def traverse(self, cameras_count: List, node: Optional[BTreeNode]):
         if not node:
             return
 
@@ -59,7 +59,7 @@ class Solution:
 
         self.cover(cameras_count, node)
 
-    def cover(self, cameras_count: List, node: Optional[TreeNode]):
+    def cover(self, cameras_count: List, node: Optional[BTreeNode]):
         if (not hasattr(node, 'parent') and node.val == 0) or \
                 (node.left and node.left.val == 0) or \
                 (node.right and node.right.val == 0):

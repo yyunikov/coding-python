@@ -1,7 +1,7 @@
 from queue import Queue
 
 
-class TreeNode:
+class BTreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
@@ -24,7 +24,7 @@ class TreeNode:
         right = None
 
         q = Queue()
-        root = TreeNode(val)
+        root = BTreeNode(val)
         q.put(root)
 
         node = root
@@ -32,9 +32,9 @@ class TreeNode:
             node = q.get() if not q.empty() and left and not right else node
 
             if not left:
-                left = TreeNode(arg)
+                left = BTreeNode(arg)
             elif not right:
-                right = TreeNode(arg)
+                right = BTreeNode(arg)
 
                 if left.val:
                     node.left = left

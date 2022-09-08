@@ -1,14 +1,14 @@
 import sys
 from typing import Optional
 
-from src.utils.tree_node import TreeNode
+from src.utils.tree_node import BTreeNode
 
 
 class Solution:
-    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+    def isValidBST(self, root: Optional[BTreeNode]) -> bool:
         return self.traverse(root, 0 - sys.maxsize - 1, sys.maxsize)
 
-    def traverse(self, root: Optional[TreeNode], lowest: int, highest: int) -> bool:
+    def traverse(self, root: Optional[BTreeNode], lowest: int, highest: int) -> bool:
         left_visit_result = True
         right_visit_result = True
 
