@@ -1,3 +1,6 @@
+from queue import Queue
+
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -15,3 +18,38 @@ class TreeNode:
     def __hash__(self) -> int:
         return hash((self.val, self.left, self.right))
 
+    @classmethod
+    def of(cls, val: int, *args):
+        left = None
+        right = None
+
+        q = Queue()
+        root = TreeNode(val)
+        q.put(root)
+
+        node = root
+        for arg in args:
+            node = q.get() if not q.empty() and left and not right else node
+
+            if not left:
+                left = TreeNode(arg)
+            elif not right:
+                right = TreeNode(arg)
+
+                if left.val:
+                    node.left = left
+                    q.put(left)
+
+                if right.val:
+                    node.right = right
+                    q.put(right)
+
+                left = None
+                right = None
+
+        if left:
+            node.left = left
+        if right:
+            node.right = right
+
+        return root
