@@ -47,6 +47,7 @@ class BTreeNode:
                 left = None
                 right = None
 
+        node = q.get() if not q.empty() and left and not right else node
         if left:
             node.left = left
         if right:
