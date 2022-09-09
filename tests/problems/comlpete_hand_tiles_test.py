@@ -1,4 +1,4 @@
-from src.problems.comlpete_hand_tiles import complete
+from src.problems.complete_hand_tiles import complete
 
 
 def test_complete_tile():
