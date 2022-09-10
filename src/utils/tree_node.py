@@ -19,16 +19,16 @@ class BTreeNode:
         return hash((self.val, self.left, self.right))
 
     @classmethod
-    def of(cls, val: int, *args):
+    def of(cls, *args):
         left = None
         right = None
 
         q = Queue()
-        root = BTreeNode(val)
+        root = BTreeNode(args[0])
         q.put(root)
 
         node = root
-        for arg in args:
+        for arg in args[1:]:
             node = q.get() if not q.empty() and left and not right else node
 
             if not left:
